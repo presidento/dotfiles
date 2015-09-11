@@ -13,13 +13,17 @@ import re
 import sys
 from io import StringIO
 import os
+import logging
 
 commit_msg_file = sys.argv[1]
+
+logging.basicConfig(level=logging.INFO)
 
 def run_cmd(*args):
     try:
         return subprocess.check_output(args).decode().strip()
-    except subprocess.CalledProcessError:
+    except subprocess.CalledProcessError as exc:
+        logging.debug(exc)
         sys.exit(0)
 
 def get_file_contents(filename):
@@ -28,19 +32,23 @@ def get_file_contents(filename):
 
 def get_branch_name():
     git_dir = os.path.dirname(os.path.dirname(__file__))
+    logging.debug('Git dir: {}'.format(git_dir))
     if os.path.isdir(git_dir + '/rebase-merge'):
         return get_file_contents(git_dir + '/rebase-merge/head-name')
     return run_cmd('git', 'symbolic-ref', '-q', 'HEAD')
     
 branch_path = get_branch_name()
+logging.debug('Branch path: {}'.format(branch_path))
 match = re.search(r'((BSP|BSPTD|BSPPDP)\-?(\d+))$', branch_path)
 
 if not match:
+    logging.debug('Not match.')
     sys.exit(0)
 
 jira_project = match.group(2)
 jira_id = match.group(3)
 jira_text = 'References: jira {project}-{id}'.format(project=jira_project, id=jira_id) 
+logging.debug(jira_text)
 
 msg_text = ''
 with open(commit_msg_file, 'r') as msg_file:
@@ -54,5 +62,6 @@ if jira_text not in msg_text:
             if 'Signed-off-by: ' in line and not jira_text_was_written:
                 jira_text_was_written = True
                 msg_file.write(jira_text + '\n')
+                logging.debug('Signed-off found, jira text written.')
             msg_file.write(line)
 
