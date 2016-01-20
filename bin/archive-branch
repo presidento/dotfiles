@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+branch_name=$1
+
+if [ -z "$branch_name" ]; then
+    echo "usage: $0 <branch_name>"
+    exit 1
+fi
+
+echo "Archive '$branch_name'..."
+
+set -e
+
+git fetch --prune
+git checkout origin/$branch_name --quiet
+git tag a/$branch_name
+git push origin a/$branch_name
+git push origin :$branch_name
+
+set +e
+
+echo "Archiving finished"
+
+git checkout @{-1}

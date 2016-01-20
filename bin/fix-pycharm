@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+echo "Fixing keyboard lock error for PyCharm (and every JetBrains product)..."
+ibus-daemon -rd
+echo "Done. Don't forget to reselect the actual keyboard layout."

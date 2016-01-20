@@ -1,0 +1,2 @@
+sudo /etc/init.d/network-manager restart
+sudo /etc/init.d/openvpn stop
