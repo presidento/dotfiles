@@ -1,0 +1,34 @@
+# This file contains the global and unversal git config parts.
+#
+# You can include it in the gitconfig file using
+#
+#   [include]
+#       path = /path/to/.gitconfig
+#
+
+[diff]
+    tool = meld
+[core]
+    editor = vim
+[alias]
+    br = branch
+    # showtool
+    sh = "!sh -c 'if [ -z $1 ]; then REVISION=HEAD; else REVISION=$1; fi; git show $REVISION --quiet; git difftool -d $REVISION~ $REVISION' - 2>/dev/null"
+    co = checkout
+    ci = commit -s
+    st = status
+    # rebase origin/master
+    rb = "!git fetch; git rebase --interactive --autosquash origin/master"
+    rc = rebase --continue
+    # difftool with file list
+    dd = "!git status; git difftool -d"
+    # log feature branch
+    l = log --oneline --graph origin/master..
+    ll = log --oneline --graph
+    mt=mergetool -t meld
+    pm="!echo 'Pull master and push to Gerrit...'; git checkout master; git pull --ff-only; git push gerrit master --force; git checkout @{-1}; git remote prune origin"
+    fu=commit -s --fixup
+    wip=!"sh -c \"git commit -s -m 'feat(WIP): $1 _'\""
+    wipa=!"sh -c \"git commit -a -s -m 'feat(WIP): $1 _'\""
+[push]
+    default = simple
