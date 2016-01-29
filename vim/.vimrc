@@ -78,9 +78,13 @@ let g:netrw_liststyle=3
 let g:netrw_list_hide='.*\.swp$'
 
 " Cut, copy and paste between Vim and system clipboard
-vnoremap <C-c> <CR>"+y
-vnoremap <C-x> <CR>"+d
+vnoremap <C-c> "+y
+vnoremap <C-x> "+d
 inoremap <C-v> <Esc>:set paste<CR>"+p:set nopaste<CR>i
+
+" Use Ctrl+Up/Down to scroll 1 line
+noremap <C-Up> <C-Y>
+noremap <C-Down> <C-E>
 
 " Comment/Uncomment lines of code when pressing Ctrl+E or Ctrl+U
 autocmd BufEnter *                              let b:cmt_leader = '# '
@@ -93,7 +97,7 @@ autocmd BufEnter *.hpp,*.cpp,*.java,*.php,*.js  let b:cmt_leader = '// '
 autocmd BufEnter *.sh,*.ruby,*.python           let b:cmt_leader = '# '
 autocmd BufEnter *.mail                         let b:cmt_leader = '> '
 autocmd BufEnter *.vim*                         let b:cmt_leader = '" '
-noremap <silent> <C-E> :<C-B>silent <C-E>s/^\( *\)\(.*\)$/\1<C-R>=escape(b:cmt_leader,'\/')<CR>\2<C-R>=escape(b:cmt_tail,'\/')<CR>/<CR>:nohlsearch<CR>
+noremap <silent> <C-M> :<C-B>silent <C-E>s/^\( *\)\(.*\)$/\1<C-R>=escape(b:cmt_leader,'\/')<CR>\2<C-R>=escape(b:cmt_tail,'\/')<CR>/<CR>:nohlsearch<CR>
 noremap <silent> <C-U> :<C-B>silent <C-E>s/^\( *\)<C-R>=escape(b:cmt_leader,'\/*')<CR>\(.*\)<C-R>=escape(b:cmt_tail,'\/*')<CR>$/\1\2/e<CR>:nohlsearch<CR>
 
 " Use tabs in Makefiles, spaces in anything else for indentation
