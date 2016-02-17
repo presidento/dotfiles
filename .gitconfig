@@ -10,6 +10,8 @@
     tool = meld
 [core]
     editor = vim
+[grep]
+    lineNumber = true
 [alias]
     br = branch
     # showtool
@@ -30,5 +32,6 @@
     fu=commit -s --fixup
     wip=!"sh -c \"git commit -s -m 'feat(WIP): $1 _'\""
     wipa=!"sh -c \"git commit -a -s -m 'feat(WIP): $1 _'\""
+    fap = fetch --all --prune
 [push]
     default = simple

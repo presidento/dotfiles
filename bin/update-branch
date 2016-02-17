@@ -9,11 +9,12 @@ fi
 
 set -e
 
+git fetch --all --prune
+
 for branch_name in "$@"
 do
-    git fetch
-    git checkout $branch_name
+    git checkout "$branch_name"
     git rebase origin/master
-    git push -f $branch_name
+    git push --force origin "$branch_name"
 done
 
