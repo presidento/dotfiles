@@ -123,3 +123,6 @@ function! ExitWithEscapeInReadonlyMode()
     endif
 endfunction
 autocmd VimEnter * call ExitWithEscapeInReadonlyMode()
+
+" YAML filetype for Salt's state and pillar files
+autocmd BufNewFile,BufRead *.sls   set filetype=yaml shiftwidth=2 tabstop=2 expandtab
