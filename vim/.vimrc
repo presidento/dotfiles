@@ -2,22 +2,21 @@
 set number
 set relativenumber
 
-" Select text with shift + arrow keys
-" activate visual mode in inserting mode
-imap <S-UP> <Esc>vk
-imap <S-Down> <Esc>vj
-imap <S-Right> <Esc>vl
-imap <S-Left> <Esc>vh
+" Forget about rows.
+imap <UP>    <NOP>
+imap <Down>  <NOP>
+imap <Right> <NOP>
+imap <Left>  <NOP>
 " activate visual mode in normal mode
-nmap <S-Up> vk
-nmap <S-Down> vj
-nmap <S-Right> vl
-nmap <S-Left> vh
+nmap <Up>    <NOP>
+nmap <Down>  <NOP>
+nmap <Right> <NOP>
+nmap <Left>  <NOP>
 " these are mapped in visual mode
-vmap <S-Up> k
-vmap <S-Down> j
-vmap <S-Right> l
-vmap <S-Left> h
+vmap <Up>    <NOP>
+vmap <Down>  <NOP>
+vmap <Right> <NOP>
+vmap <Left>  <NOP>
 
 " jump to first non-whitespace on line using HOME
 nmap <Home> ^
