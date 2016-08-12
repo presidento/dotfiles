@@ -21,6 +21,7 @@
     st = status
     # rebase origin/master
     rb = "!git fetch; git rebase --interactive --autosquash origin/master"
+    rba = "!git fetch; git rebase --autosquash origin/master"
     rc = rebase --continue
     # difftool with file list
     dd = "!git status; git difftool -d"
@@ -36,3 +37,8 @@
     fap = fetch --all --prune
 [push]
     default = simple
+[color "grep"]
+    linenumber=cyan
+    match=red
+    filename=green
+    separator=black bold
