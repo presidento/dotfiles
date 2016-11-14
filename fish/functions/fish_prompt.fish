@@ -1,6 +1,16 @@
 function fish_prompt --description 'Write out the prompt'
 	set -l last_status $status
 
+    set -q CMD_DURATION; or set CMD_DURATION 0
+    set -l duration_in_sec (math "$CMD_DURATION/1000")
+    if test $duration_in_sec -gt 60
+       set_color yellow
+    else
+       set_color brgrey
+    end
+    echo -n (string trim (date -u -d @$duration_in_sec +"%M:%S "))" "
+    set_color normal
+
 	if not set -q __fish_git_prompt_show_informative_status
 		set -g __fish_git_prompt_show_informative_status 1
 	end
@@ -89,6 +99,7 @@ function fish_prompt --description 'Write out the prompt'
         set_color normal
     end
 
+    echo ""
     echo -n "$suffix "
 
     set_color normal
