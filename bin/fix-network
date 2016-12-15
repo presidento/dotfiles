@@ -8,7 +8,10 @@ function delelete_unneded_ip_routing()
         sudo ip ro del $unneeded_ip_routing
     fi
 }
-nmcli connection down 04360a13-85b2-48a1-9781-349bc3a3d65f &>/dev/null
-sudo /etc/init.d/network-manager restart
-sudo /etc/init.d/openvpn stop
+sudo nmcli connection down 04360a13-85b2-48a1-9781-349bc3a3d65f &>/dev/null
+sudo nmcli device disconnect eth0
+sudo nmcli device connect eth0
+sudo systemctl stop openvpn
+sudo systemctl restart network-manager
+sudo systemctl restart NetworkManager
 delelete_unneded_ip_routing
