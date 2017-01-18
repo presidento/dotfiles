@@ -2,22 +2,6 @@
 set number
 set relativenumber
 
-" Forget about rows.
-imap <UP>    <NOP>
-imap <Down>  <NOP>
-imap <Right> <NOP>
-imap <Left>  <NOP>
-" activate visual mode in normal mode
-nmap <Up>    <NOP>
-nmap <Down>  <NOP>
-nmap <Right> <NOP>
-nmap <Left>  <NOP>
-" these are mapped in visual mode
-vmap <Up>    <NOP>
-vmap <Down>  <NOP>
-vmap <Right> <NOP>
-vmap <Left>  <NOP>
-
 " jump to first non-whitespace on line using HOME
 nmap <Home> ^
 imap <Home> <Esc>^i
