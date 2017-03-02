@@ -1,3 +1,3 @@
 function slng
-    cd ~/work/syslog-ng
+	cd ~/work/syslog-ng
 end
