@@ -69,6 +69,9 @@ inoremap <C-v> <Esc>:set paste<CR>"+p:set nopaste<CR>i
 noremap <C-Up> <C-Y>
 noremap <C-Down> <C-E>
 
+" Mouse left double click to toggle fold
+noremap <2-LeftMouse> za
+
 " Comment/Uncomment lines of code when pressing Ctrl+E or Ctrl+U
 autocmd BufEnter *                              let b:cmt_leader = '# '
 autocmd BufEnter *                              let b:cmt_tail = ''
