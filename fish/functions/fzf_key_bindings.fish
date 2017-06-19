@@ -1,0 +1,1 @@
+/home/matefarkas/install/fzf/shell/key-bindings.fish
