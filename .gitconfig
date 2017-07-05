@@ -32,8 +32,8 @@
     pm="!echo 'Pull master and push to Gerrit...'; git checkout master; git pull --ff-only; git push gerrit master --force; git checkout @{-1}; git remote prune origin"
     p="pull --ff-only"
     fu=commit -s --fixup
-    wip=!"sh -c \"git commit -s -m 'fix(WIP): $1 _'\""
-    wipa=!"sh -c \"git commit -a -s -m 'fix(WIP): $1 _'\""
+    wip=!"sh -c \"git commit -s -n -m 'WIP! $1'\""
+    wipa=!"sh -c \"git commit -a -s -n -m 'WIP! $1'\""
     fap = fetch --all --prune
 [push]
     default = simple
