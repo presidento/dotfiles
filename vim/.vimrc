@@ -96,13 +96,6 @@ function! ToggleTabExpansion()
 endfunction
 autocmd BufNewFile,BufRead * exec ToggleTabExpansion()
 
-" Highlight Python double quotes
-function! HighlightDoubleQuotes()
-    syn region pyDoubleQuotes start=/\v"/ skip=/\v\\./ end=/\v"/
-    hi def link pyDoubleQuotes Error
-endfunction
-autocmd Syntax python call HighlightDoubleQuotes()
-
 " Add special binding for Esc to quit in read-only mode
 function! ExitWithEscapeInReadonlyMode()
     if &readonly
