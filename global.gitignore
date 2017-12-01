@@ -1,0 +1,25 @@
+# This file contains the global and unversal .gitignore parts.
+#
+# You can include it in the gitconfig file using
+#
+#   [core]
+#       excludesfile = /path/to/global.gitignore
+#
+
+# Vim swap files
+.*.swp
+
+# Python cache
+__pycache__
+*.pyc
+.cache/
+
+# Backup files
+*~
+
+# PyCharm's project file
+.idea
+
+# Libreoffice swap files
+.~*#
+
